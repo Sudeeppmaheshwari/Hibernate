@@ -11,8 +11,8 @@ public class clientApp {
 	public static void main(String[] args) {
 
 		UserDetails userDetails = new UserDetails();
-		userDetails.setUserId(1);
-		userDetails.setUserName("FirstUser");
+		userDetails.setUserId(2);
+		userDetails.setUserName("Second User");
 
 		SessionFactory sessionFactory = new Configuration().configure()
 				.buildSessionFactory();

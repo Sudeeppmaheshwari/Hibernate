@@ -1,5 +1,8 @@
 package com.sudeep.hibernate.dto;
 
+import javax.persistence.Entity;
+
+@Entity
 public class UserDetails {
 	private int userId;
 	private String userName;

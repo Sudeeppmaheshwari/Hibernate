@@ -22,8 +22,7 @@ public class UserDetails {
 	private String address;
 	private String details;
 	// This field is common for all users
-	// so that if we don't want to store this
-	// field into our database.
+	// so that if we don't want to store this field into our database.
 	@Transient
 	public static String companyName;
 

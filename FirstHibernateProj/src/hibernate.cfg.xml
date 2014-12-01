@@ -29,7 +29,7 @@
 		<property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
 		<property name="current_session_context_class">thread</property>
 		<!-- Mapping files -->
-		<mapping class="com.daniel.model.User" />
+		<mapping class="com.sudeep.hibernate.dto.UserDetails" />
 
 	</session-factory>
 </hibernate-configuration>

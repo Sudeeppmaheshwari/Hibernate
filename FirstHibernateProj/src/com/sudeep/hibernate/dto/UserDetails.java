@@ -17,7 +17,7 @@ public class UserDetails {
 	private int userId;
 
 	private String userName;
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.DATE)//This is used to tell hibernate that we want only to save date not the time stamp in database
 	private Date joinedDate;
 	private String address;
 	private String details;

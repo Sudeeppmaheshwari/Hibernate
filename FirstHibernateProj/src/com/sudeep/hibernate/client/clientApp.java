@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.sudeep.hibernate.dto.Address;
 import com.sudeep.hibernate.dto.UserDetails;
 
 public class clientApp {
@@ -42,8 +43,13 @@ public class clientApp {
 
 		UserDetails user1 = new UserDetails();
 		user1.setUserName("First User");
-		UserDetails user2=new UserDetails();
+		UserDetails user2 = new UserDetails();
 		user2.setUserName("Second User");
+		Address address = new Address();
+		address.setStreet("street");
+		address.setCity("city name");
+
+		user1.setAddress(address);
 		SessionFactory sessionFactory = new Configuration().configure()
 				.buildSessionFactory();
 		Session session = sessionFactory.openSession();

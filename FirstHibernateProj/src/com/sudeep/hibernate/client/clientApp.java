@@ -41,26 +41,30 @@ public class clientApp {
 		// <<<<<<<<<<<<<<<<<<<<<<<<<<<<*>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 		// After Full these properties siplefy the code.
 
-		UserDetails user1 = new UserDetails();
-		user1.setUserName("First User");
-
-		Address address = new Address();
-		address.setStreet("street");
-		address.setCity("city name");
-
-		Address address1 = new Address();
-		address.setStreet("street1");
-		address.setCity("city name1");
-		user1.setHomeAddress(address);
-		user1.setOfficeAddress(address1);
-		SessionFactory sessionFactory = new Configuration().configure()
-				.buildSessionFactory();
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.save(user1);
-
-  		session.getTransaction().commit();
-		session.close();
+		// UserDetails user1 = new UserDetails();
+		// user1.setUserName("First User");
+		//
+		// Address address = new Address();
+		// address.setStreet("street");
+		// address.setCity("city name");
+		//
+		// Address address1 = new Address();
+		// address.setStreet("street1");
+		// address.setCity("city name1");
+		// user1.setHomeAddress(address);
+		// user1.setOfficeAddress(address1);
+		// SessionFactory sessionFactory = new Configuration().configure()
+		// .buildSessionFactory();
+		// Session session = sessionFactory.openSession();
+		// session.beginTransaction();
+		// session.save(user1);
+		//
+		// session.getTransaction().commit();
+		// session.close();
+		// >>>>>>>>>>>>>>>>>>>>>>>>*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		// After Full these properties siplefy the code.
+		
+	
 
 	}
 

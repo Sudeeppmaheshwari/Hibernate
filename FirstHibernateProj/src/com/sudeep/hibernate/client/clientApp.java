@@ -43,20 +43,23 @@ public class clientApp {
 
 		UserDetails user1 = new UserDetails();
 		user1.setUserName("First User");
-		UserDetails user2 = new UserDetails();
-		user2.setUserName("Second User");
+
 		Address address = new Address();
 		address.setStreet("street");
 		address.setCity("city name");
 
-		user1.setAddress(address);
+		Address address1 = new Address();
+		address.setStreet("street1");
+		address.setCity("city name1");
+		user1.setHomeAddress(address);
+		user1.setOfficeAddress(address1);
 		SessionFactory sessionFactory = new Configuration().configure()
 				.buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(user1);
-		session.saveOrUpdate(user2);
-		session.getTransaction().commit();
+
+  		session.getTransaction().commit();
 		session.close();
 
 	}

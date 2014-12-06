@@ -1,5 +1,8 @@
 package com.sudeep.hibernate.dto;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,9 +18,17 @@ public class UserDetails {
 	private int userId;
 
 	private String userName;
-	
+
 	@Embedded
-	private Address address;
+	@AttributeOverrides({
+			@AttributeOverride(column = @Column(name = "HOME_STREET_NAME"), name = "street"),
+			@AttributeOverride(column = @Column(name = "HOME_STATE_NAME"), name = "state"),
+			@AttributeOverride(column = @Column(name = "HOME_CITY_NAME"), name = "city"),
+			@AttributeOverride(column = @Column(name = "HOME_PIN_CODE"), name = "pincode") })
+	private Address homeAddress;
+
+	@Embedded
+	private Address officeAddress;
 
 	public int getUserId() {
 		return userId;
@@ -35,12 +46,20 @@ public class UserDetails {
 		this.userName = userName;
 	}
 
-	public Address getAddress() {
-		return address;
+	public Address getHomeAddress() {
+		return homeAddress;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setHomeAddress(Address homeAddress) {
+		this.homeAddress = homeAddress;
+	}
+
+	public Address getOfficeAddress() {
+		return officeAddress;
+	}
+
+	public void setOfficeAddress(Address officeAddress) {
+		this.officeAddress = officeAddress;
 	}
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<First

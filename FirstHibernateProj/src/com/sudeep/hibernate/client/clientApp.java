@@ -64,12 +64,12 @@ public class clientApp {
 		// >>>>>>>>>>>>>>>>>>>>>>>>*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 		// After Full these properties siplefy the code.
 		Address address = new Address();
-		address.setStreet("street");
-		address.setCity("city name");
+		address.setStreet("street1");
+		address.setCity("city name1");
 
 		Address address1 = new Address();
-		address1.setStreet("street1");
-		address1.setCity("city name1");
+		address1.setStreet("street2");
+		address1.setCity("city name2");
 
 		UserDetails user1 = new UserDetails();
 		user1.setUserName("First User");

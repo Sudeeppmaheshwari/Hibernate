@@ -8,6 +8,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.sudeep.hibernate.dto.Address;
 import com.sudeep.hibernate.dto.UserDetails;
+import com.sudeep.hibernate.dto.Vehical;
 
 public class clientApp {
 
@@ -63,36 +64,50 @@ public class clientApp {
 		// session.close();
 		// >>>>>>>>>>>>>>>>>>>>>>>>*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 		// After Full these properties siplefy the code.
-		Address address = new Address();
-		address.setStreet("street1");
-		address.setCity("city name1");
-
-		Address address1 = new Address();
-		address1.setStreet("street2");
-		address1.setCity("city name2");
-
+		// Address address = new Address();
+		// address.setStreet("street1");
+		// address.setCity("city name1");
+		//
+		// Address address1 = new Address();
+		// address1.setStreet("street2");
+		// address1.setCity("city name2");
+		//
+		// UserDetails user1 = new UserDetails();
+		// user1.setUserName("First User");
+		// user1.getAddresses().add(address);
+		// user1.getAddresses().add(address1);
+		//
+		// SessionFactory sessionFactory = new Configuration().configure()
+		// .buildSessionFactory();
+		// Session session = sessionFactory.openSession();
+		// session.beginTransaction();
+		// session.save(user1);
+		// session.getTransaction().commit();
+		// session.close();
+		// // code to pull up user data from data base.
+		// session = sessionFactory.openSession();
+		// user1 = null;
+		// user1 = (UserDetails) session.get(UserDetails.class, 1);
+		// // Here it will not pull all address assosiated with this user. it's
+		// // default behaviour.
+		// // if we want addresses of that user
+		// session.close();
+		// System.out.println(user1.getAddresses().size());
+		// <<<<<<<<<<<<<<<<<<??????>>>>>>>>>>>>>>>This is Third
+		// change<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 		UserDetails user1 = new UserDetails();
 		user1.setUserName("First User");
-		user1.getAddresses().add(address);
-		user1.getAddresses().add(address1);
-
+		Vehical vehical = new Vehical();
+		vehical.setVehicalName("car");
+		user1.setVehical(vehical);
 		SessionFactory sessionFactory = new Configuration().configure()
 				.buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(user1);
+		session.save(vehical);
 		session.getTransaction().commit();
 		session.close();
-		// code to pull up user data from data base.
-		session = sessionFactory.openSession();
-		user1 = null;
-		user1 = (UserDetails) session.get(UserDetails.class, 1);
-		// Here it will not pull all address assosiated with this user. it's
-		// default behaviour.
-		// if we want addresses of that user
-		session.close();
-		System.out.println(user1.getAddresses().size());
-
 	}
 
 }

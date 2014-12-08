@@ -19,6 +19,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CollectionId;
@@ -33,11 +34,9 @@ public class UserDetails {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
 	private String userName;
-	@ElementCollection(fetch = FetchType.EAGER)
-	@JoinTable(name = "USER_ADDRESS", joinColumns = @JoinColumn(name = "USER_ID"))
-	@GenericGenerator(name = "hilo-gen", strategy = "hilo")
-	@CollectionId(columns = { @Column(name = "ADDRESS_ID") }, generator = "hilo-gen", type = @Type(type = "long"))
-	private Collection<Address> addresses = new ArrayList<Address>();
+
+	@OneToOne
+	private Vehical vehical;
 
 	public int getUserId() {
 		return userId;
@@ -55,13 +54,51 @@ public class UserDetails {
 		this.userName = userName;
 	}
 
-	public Collection<Address> getAddresses() {
-		return addresses;
+	public Vehical getVehical() {
+		return vehical;
 	}
 
-	public void setAddresses(Collection<Address> addresses) {
-		this.addresses = addresses;
+	public void setVehical(Vehical vehical) {
+		this.vehical = vehical;
 	}
+
+	// <<<<<<<<<<<<<<<<<<<<<<<<<<<Third
+	// Change>>>>>>>>>>>>>>>>>>>>>>>>>>
+	// @Id
+	// @GeneratedValue(strategy = GenerationType.AUTO)
+	// private int userId;
+	// private String userName;
+	// @ElementCollection(fetch = FetchType.EAGER)
+	// @JoinTable(name = "USER_ADDRESS", joinColumns = @JoinColumn(name =
+	// "USER_ID"))
+	// @GenericGenerator(name = "hilo-gen", strategy = "hilo")
+	// @CollectionId(columns = { @Column(name = "ADDRESS_ID") }, generator =
+	// "hilo-gen", type = @Type(type = "long"))
+	// private Collection<Address> addresses = new ArrayList<Address>();
+	//
+	// public int getUserId() {
+	// return userId;
+	// }
+	//
+	// public void setUserId(int userId) {
+	// this.userId = userId;
+	// }
+	//
+	// public String getUserName() {
+	// return userName;
+	// }
+	//
+	// public void setUserName(String userName) {
+	// this.userName = userName;
+	// }
+	//
+	// public Collection<Address> getAddresses() {
+	// return addresses;
+	// }
+	//
+	// public void setAddresses(Collection<Address> addresses) {
+	// this.addresses = addresses;
+	// }
 
 	// >>>>>>>>>>>>>>>>>>>>>>Second Change<<<<<<<<<<<<<<<<<<<<<<<<
 	// // @Id

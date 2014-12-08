@@ -1,5 +1,7 @@
 package com.sudeep.hibernate.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,6 +20,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 @Entity
 @Table(name = "USER_DETAILS")
 public class UserDetails {
@@ -28,7 +34,10 @@ public class UserDetails {
 	private String userName;
 	@ElementCollection
 	@JoinTable(name = "USER_ADDRESS", joinColumns = @JoinColumn(name = "USER_ID"))
-	private Set<Address> addresses = new HashSet<Address>();
+	
+	@GenericGenerator(name = "hilo-gen", strategy = "hilo")
+	@CollectionId(columns = { @Column(name = "ADDRESS_ID") }, generator = "hilo-gen", type = @Type(type = "long"))
+	private Collection<Address> addresses = new ArrayList<Address>();
 
 	public int getUserId() {
 		return userId;
@@ -46,11 +55,11 @@ public class UserDetails {
 		this.userName = userName;
 	}
 
-	public Set<Address> getAddresses() {
+	public Collection<Address> getAddresses() {
 		return addresses;
 	}
 
-	public void setAddresses(Set<Address> addresses) {
+	public void setAddresses(Collection<Address> addresses) {
 		this.addresses = addresses;
 	}
 

@@ -83,6 +83,15 @@ public class clientApp {
 		session.save(user1);
 		session.getTransaction().commit();
 		session.close();
+		// code to pull up user data from data base.
+		session = sessionFactory.openSession();
+		user1 = null;
+		user1 = (UserDetails) session.get(UserDetails.class, 1);
+		// Here it will not pull all address assosiated with this user. it's
+		// default behaviour.
+		// if we want addresses of that user
+		session.close();
+		System.out.println(user1.getAddresses().size());
 
 	}
 

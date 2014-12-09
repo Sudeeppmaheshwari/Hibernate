@@ -96,6 +96,8 @@ public class clientApp {
 		// System.out.println(user1.getAddresses().size());
 		// <<<<<<<<<<<<<<<<<<??????>>>>>>>>>>>>>>>This is Third
 		// change<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		SessionFactory sessionFactory = new Configuration().configure()
+				.buildSessionFactory();
 		UserDetails user1 = new UserDetails();
 		user1.setUserName("First User");
 		Vehical vehical1 = new Vehical();
@@ -105,8 +107,9 @@ public class clientApp {
 		// user1.setVehical(vehical);
 		user1.getVehicals().add(vehical1);
 		user1.getVehicals().add(vehical2);
-		SessionFactory sessionFactory = new Configuration().configure()
-				.buildSessionFactory();
+		vehical1.setUser(user1);
+		vehical2.setUser(user1);
+
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(user1);

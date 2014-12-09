@@ -19,6 +19,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -35,8 +36,12 @@ public class UserDetails {
 	private int userId;
 	private String userName;
 
-	@OneToOne
-	private Vehical vehical;
+	@OneToMany
+	@JoinTable(name = "USER_VEHICAL", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "VEHICAL_ID"))
+	private Collection<Vehical> vehicals = new ArrayList<Vehical>();
+
+	// @OneToOne
+	// private Vehical vehical;
 
 	public int getUserId() {
 		return userId;
@@ -54,12 +59,12 @@ public class UserDetails {
 		this.userName = userName;
 	}
 
-	public Vehical getVehical() {
-		return vehical;
+	public Collection<Vehical> getVehicals() {
+		return vehicals;
 	}
 
-	public void setVehical(Vehical vehical) {
-		this.vehical = vehical;
+	public void setVehicals(Collection<Vehical> vehicals) {
+		this.vehicals = vehicals;
 	}
 
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<Third

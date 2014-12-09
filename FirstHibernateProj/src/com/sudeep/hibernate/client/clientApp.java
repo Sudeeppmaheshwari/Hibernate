@@ -1,5 +1,6 @@
 package com.sudeep.hibernate.client;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.hibernate.Session;
@@ -97,15 +98,20 @@ public class clientApp {
 		// change<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 		UserDetails user1 = new UserDetails();
 		user1.setUserName("First User");
-		Vehical vehical = new Vehical();
-		vehical.setVehicalName("car");
-		user1.setVehical(vehical);
+		Vehical vehical1 = new Vehical();
+		vehical1.setVehicalName("car");
+		Vehical vehical2 = new Vehical();
+		vehical2.setVehicalName("Bike");
+		// user1.setVehical(vehical);
+		user1.getVehicals().add(vehical1);
+		user1.getVehicals().add(vehical2);
 		SessionFactory sessionFactory = new Configuration().configure()
 				.buildSessionFactory();
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(user1);
-		session.save(vehical);
+		session.save(vehical1);
+		session.save(vehical2);
 		session.getTransaction().commit();
 		session.close();
 	}

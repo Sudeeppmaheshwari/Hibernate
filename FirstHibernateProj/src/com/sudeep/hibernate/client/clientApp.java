@@ -107,8 +107,8 @@ public class clientApp {
 		// user1.setVehical(vehical);
 		user1.getVehicals().add(vehical1);
 		user1.getVehicals().add(vehical2);
-		vehical1.setUser(user1);
-		vehical2.setUser(user1);
+		vehical1.getUsers().add(user1);
+		vehical2.getUsers().add(user1);
 
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();

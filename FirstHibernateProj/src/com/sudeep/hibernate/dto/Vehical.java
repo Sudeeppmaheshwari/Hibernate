@@ -1,10 +1,15 @@
 package com.sudeep.hibernate.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
 
 @Entity
 public class Vehical {
@@ -12,16 +17,15 @@ public class Vehical {
 	@GeneratedValue
 	private int vehicalId;
 	private String vehicalName;
-	@ManyToOne
-	@JoinColumn(name="USER_ID")
-	private UserDetails user;
+	@ManyToMany(mappedBy="vehicals")
+	private Collection<UserDetails> users = new ArrayList<UserDetails>();
 
-	public UserDetails getUser() {
-		return user;
+	public Collection<UserDetails> getUsers() {
+		return users;
 	}
 
-	public void setUser(UserDetails user) {
-		this.user = user;
+	public void setUsers(Collection<UserDetails> users) {
+		this.users = users;
 	}
 
 	public int getVehicalId() {

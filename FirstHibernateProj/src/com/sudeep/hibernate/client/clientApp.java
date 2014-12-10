@@ -107,14 +107,17 @@ public class clientApp {
 		// user1.setVehical(vehical);
 		user1.getVehicals().add(vehical1);
 		user1.getVehicals().add(vehical2);
-		vehical1.getUsers().add(user1);
-		vehical2.getUsers().add(user1);
+		vehical1.setUser(user1);
+		// vehical2.setUser(user1);
 
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(user1);
 		session.save(vehical1);
 		session.save(vehical2);
+		Vehical getVehical = (Vehical) session.get(Vehical.class, 2);
+		System.out
+				.println("Vehicle2 user: " + getVehical.getUser().getUserId());
 		session.getTransaction().commit();
 		session.close();
 	}

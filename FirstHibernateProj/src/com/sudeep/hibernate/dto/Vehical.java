@@ -11,21 +11,25 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 @Entity
 public class Vehical {
 	@Id
 	@GeneratedValue
 	private int vehicalId;
 	private String vehicalName;
-	@ManyToMany(mappedBy="vehicals")
-	private Collection<UserDetails> users = new ArrayList<UserDetails>();
+	@ManyToOne
+	@NotFound(action = NotFoundAction.IGNORE)
+	private UserDetails user;
 
-	public Collection<UserDetails> getUsers() {
-		return users;
+	public UserDetails getUser() {
+		return user;
 	}
 
-	public void setUsers(Collection<UserDetails> users) {
-		this.users = users;
+	public void setUser(UserDetails user) {
+		this.user = user;
 	}
 
 	public int getVehicalId() {

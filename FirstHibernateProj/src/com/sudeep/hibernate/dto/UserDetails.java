@@ -36,7 +36,7 @@ public class UserDetails {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
 	private String userName;
-	@ManyToMany
+	@OneToMany
 	// @OneToMany(mappedBy = "user")
 	// @JoinTable(name = "USER_VEHICAL", joinColumns = @JoinColumn(name =
 	// "USER_ID"), inverseJoinColumns = @JoinColumn(name = "VEHICAL_ID"))
